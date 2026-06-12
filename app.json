@@ -22,7 +22,7 @@
       "predictiveBackGestureEnabled": false
     },
     "web": {
-      "bundler": "webpack",
+      "bundler": "metro",
       "output": "single",
       "favicon": "./assets/images/favicon.png"
     },
