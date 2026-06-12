@@ -39,7 +39,7 @@ export interface AIDiagnosis {
  * Groq ofrece acceso gratuito a modelos potentes como Llama 3.
  * Consigue tu API Key en: https://console.groq.com/
  */
-const GROQ_API_KEY = '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'; // Reemplaza con tu clave real
+const GROQ_API_KEY = process.env.EXPO_PUBLIC_GROQ_API_KEY; // Reemplaza con tu clave real
 const GROQ_MODEL = 'llama-3.3-70b-versatile';
 
 /**
