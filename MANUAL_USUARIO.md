@@ -36,7 +36,7 @@ El sistema es accesible vía: `https://bettermind-app.vercel.app` (o dirección 
 ### Instrucciones de Registro y Login
 1. **Registro**: Haga clic en "¿No tienes cuenta? Regístrate", complete sus datos personales (Nombre, Email, Contraseña) y acepte los términos de privacidad.
 2. **Login**: Ingrese su email y contraseña. El sistema mantendrá su sesión activa de forma segura.
-3. **Recuperación**: En caso de olvido, utilice la opción "Recuperar Contraseña" para recibir un enlace en su correo electrónico.
+
 
 ---
 
@@ -67,23 +67,23 @@ El sistema es accesible vía: `https://bettermind-app.vercel.app` (o dirección 
   3. Ingrese el nombre, fecha de nacimiento y asigne un PIN de seguridad de 4 dígitos.
   4. Seleccione el grado escolar (5° a 9°).
   5. Presione "Guardar".
-- **Postcondición**: El perfil aparecerá en el menú principal listo para jugar.
+- **Postcondición**: El perfil aparecerá en la lista para perfiles, al acceder a este pedirá doble verificación, la primera es el pin de acceso y la segunda la autorización por parte del padre, completada satisfactoriamente estos dos requisitos, se redirigirá hasta el menú principal listo para jugar.
 
 ### Procedimiento B: Consulta de Diagnóstico IA
-- **Precondición**: El niño debe haber completado al menos 3 niveles de juego.
+- **Precondición**: El niño debe haber completado al menos 1 nivel de juego.
 - **Pasos**:
   1. En el Panel de Padres, localice al niño y presione "Seguimiento".
   2. Haga clic en el botón "🧠 Consultar Diagnóstico IA".
   3. Espere unos segundos a que el Agente analice los datos de Groq.
   4. Revise el Plan de Mejora y las Observaciones de Seguimiento (Rojo/Naranja/Verde).
-- **Postcondición**: El sistema mostrará un análisis pedagógico profesional y descargable.
+- **Postcondición**: El sistema mostrará un análisis pedagógico profesional.
 
 ---
 
 ## 6. Gestión de Errores y FAQ (Preguntas Frecuentes)
 - **Error: "Formato de correo inválido"**: Verifique que su email incluya el símbolo @ y un dominio válido (.com, .es).
 - **Error: "La IA está experimentando mucha carga"**: Este mensaje aparece si la API gratuita de Groq alcanzó su límite de velocidad. Espere 1 minuto e intente de nuevo.
-- **¿Por qué el puntaje sigue en 0?**: Asegúrese de haber presionado el botón "COMPROBAR" dentro del juego y haber finalizado el nivel correctamente.
+
 
 ---
 
