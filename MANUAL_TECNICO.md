@@ -74,14 +74,12 @@ Para que el proyecto funcione correctamente, se han integrado las siguientes lib
 ## 3. Modelamiento de Datos y Persistencia
 
 ### Diagrama Entidad-Relación (Lógico)
-El sistema se organiza en torno al núcleo de usuarios (Padres e Hijos) y su progreso en los módulos educativos.
+El sistema se organiza en torno al núcleo de usuarios (Padres e Hijos) y su progreso en los minijuegos.
 
 ```mermaid
 erDiagram
-    PARENTS ||--o{ CHILDREN : has
-    CHILDREN ||--o{ LEVELPROGRESS : tracks
-    CHILDREN ||--o{ PROGRESS : generates
-    MODULES ||--o{ PROGRESS : categorizes
+    PARENTS ||--o{ CHILDREN : tiene
+    CHILDREN ||--o{ LEVELPROGRESS : registra
 
     PARENTS {
         int parent_id PK

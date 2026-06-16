@@ -29,7 +29,6 @@ import {
     updateChild
 } from './utils/database/children';
 import { getFullChildProgress } from './utils/database/level-progress';
-import { getParentDashboardData } from './utils/database/progress';
 import { soundManager } from './utils/sound-manager';
 import { supabase } from './utils/supabase';
 
@@ -41,7 +40,6 @@ export default function ParentPanel() {
   const { parent, activeChild, setActiveChild } = useAuth();
   const [children, setChildren] = useState<any[]>([]);
   const [pendingRequests, setPendingRequests] = useState<any[]>([]);
-  const [progressData, setProgressData] = useState<any[]>([]);
   const [isAddModalVisible, setAddModalVisible] = useState(false);
   const [editingChild, setEditingChild] = useState<any>(null);
   const [newChildName, setNewChildName] = useState('');
@@ -125,9 +123,6 @@ export default function ParentPanel() {
         
         const pending = await getPendingRequests(parent.parent_id);
         setPendingRequests(pending);
-
-        const dashboard = await getParentDashboardData(parent.parent_id);
-        setProgressData(dashboard);
       } catch (error) {
         console.error('Error loading data:', error);
       }

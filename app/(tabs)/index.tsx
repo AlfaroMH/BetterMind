@@ -175,7 +175,7 @@ export default function GamesScreen() {
         showsVerticalScrollIndicator={false}
       >
         <View style={{ width: contentWidth as any, maxWidth: '100%' }}>
-          <Text style={styles.title}>🎮 Juegos Mentales</Text>
+          <Text style={styles.title}>🎮 BetterMind - Juegos Mentales</Text>
           <Text style={styles.subtitle}>¡Selecciona un juego para comenzar!</Text>
 
           {/* Grid de juegos para pantallas grandes */}

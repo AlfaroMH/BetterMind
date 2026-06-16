@@ -32,7 +32,7 @@ export async function initDatabase() {
       grade_level INTEGER,
       pin TEXT,
       is_parent_profile BOOLEAN DEFAULT 0,
-      access_request_status TEXT DEFAULT 'none', -- 'none', 'pending', 'authorized', 'denied'
+      access_request_status TEXT DEFAULT 'none',
       access_request_time DATETIME,
       registration_date DATETIME DEFAULT CURRENT_TIMESTAMP,
       FOREIGN KEY (parent_id) REFERENCES Parents(parent_id) ON DELETE CASCADE
@@ -56,15 +56,6 @@ export async function initDatabase() {
     await db.execAsync('ALTER TABLE Children ADD COLUMN access_request_time DATETIME;');
   } catch (e) {}
 
-  // Create Modules table
-  await db.execAsync(`
-    CREATE TABLE IF NOT EXISTS Modules (
-      module_id INTEGER PRIMARY KEY AUTOINCREMENT,
-      name TEXT UNIQUE NOT NULL,
-      description TEXT
-    );
-  `);
-
   // Create LevelProgress table
   await db.execAsync(`
     CREATE TABLE IF NOT EXISTS LevelProgress (
@@ -87,52 +78,6 @@ export async function initDatabase() {
   } catch (e) {
     // Column might already exist
   }
-
-  // Create Progress table
-  await db.execAsync(`
-    CREATE TABLE IF NOT EXISTS Progress (
-      progress_id INTEGER PRIMARY KEY AUTOINCREMENT,
-      child_id INTEGER NOT NULL,
-      module_id INTEGER NOT NULL,
-      score INTEGER DEFAULT 0,
-      level INTEGER DEFAULT 1,
-      playtime INTEGER DEFAULT 0,
-      successes INTEGER DEFAULT 0,
-      errors INTEGER DEFAULT 0,
-      date DATETIME DEFAULT CURRENT_TIMESTAMP,
-      FOREIGN KEY (child_id) REFERENCES Children(child_id) ON DELETE CASCADE,
-      FOREIGN KEY (module_id) REFERENCES Modules(module_id) ON DELETE CASCADE
-    );
-  `);
-
-  // Create Sessions table
-  await db.execAsync(`
-    CREATE TABLE IF NOT EXISTS Sessions (
-      session_id INTEGER PRIMARY KEY AUTOINCREMENT,
-      parent_id INTEGER NOT NULL,
-      login_date DATETIME DEFAULT CURRENT_TIMESTAMP,
-      FOREIGN KEY (parent_id) REFERENCES Parents(parent_id) ON DELETE CASCADE
-    );
-  `);
-
-  // Ensure Spanish Modules exist
-  const modules = [
-    { name: 'Matemáticas', description: 'Módulo de matemáticas: operaciones y razonamiento lógico.' },
-    { name: 'Memoria', description: 'Módulo de memoria: ejercicios para mejorar la memoria a corto y largo plazo.' },
-    { name: 'Lógica', description: 'Módulo de lógica: acertijos y estrategias de resolución de problemas.' }
-  ];
-
-  for (const module of modules) {
-    const existing = await db.getFirstAsync<{ module_id: number }>('SELECT module_id FROM Modules WHERE name = ?;', [module.name]);
-    if (!existing) {
-      await db.runAsync('INSERT INTO Modules (name, description) VALUES (?, ?);', [module.name, module.description]);
-    }
-  }
-
-  // Optional: Update old English modules if they exist to avoid confusion
-  await db.runAsync("UPDATE Modules SET name = 'Matemáticas' WHERE name = 'math';");
-  await db.runAsync("UPDATE Modules SET name = 'Memoria' WHERE name = 'memory';");
-  await db.runAsync("UPDATE Modules SET name = 'Lógica' WHERE name = 'logic';");
 
   console.log('Database initialized successfully');
   return db;
