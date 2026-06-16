@@ -1,5 +1,3 @@
--- Copia y pega este script en el SQL Editor de tu proyecto en Supabase (https://supabase.com/dashboard/project/_/sql)
--- Si ya tienes las tablas "modules", "progress" o "sessions", puedes borralas manualmente desde el Table Editor.
 
 -- Create parents table
 CREATE TABLE IF NOT EXISTS parents (
