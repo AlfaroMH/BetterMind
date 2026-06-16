@@ -31,7 +31,7 @@ BetterMind es una solución tecnológica educativa diseñada para fortalecer pro
 
 ## 3. Guía de Inicio Rápido
 ### URL de Acceso
-El sistema es accesible vía: `https://bettermind-app.vercel.app` (o dirección local configurada).
+El sistema es accesible vía: `https://bettermind-official.vercel.app`.
 
 ### Instrucciones de Registro y Login
 1. **Registro**: Haga clic en "¿No tienes cuenta? Regístrate", complete sus datos personales (Nombre, Email, Contraseña) y acepte los términos de privacidad.
