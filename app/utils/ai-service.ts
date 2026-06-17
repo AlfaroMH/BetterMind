@@ -75,6 +75,10 @@ export async function getAIDiagnosis(childName: string, progress: LevelProgressR
     return `Aún no hay suficientes datos de juego para que el Agente de IA analice a ${childName}. ¡Anímale a jugar más niveles!`;
   }
 
+  if (!GROQ_API_KEY) {
+    return "Falta la API Key de Groq. Por favor, crea un archivo .env en la raíz del proyecto con la variable EXPO_PUBLIC_GROQ_API_KEY=tu_api_key. Puedes obtener una clave en https://console.groq.com/";
+  }
+
   try {
     const stats = progress.map(p => ({
       juego: getFriendlyGameName(p.game_id),
@@ -163,6 +167,6 @@ export async function getAIDiagnosis(childName: string, progress: LevelProgressR
 
   } catch (err) {
     console.error('Error del Agente de IA (Groq):', err);
-    return "El Agente de IA gratuito está experimentando mucha carga o la API Key no es válida. Por favor, verifica tu configuración en ai-service.ts.";
+    return "El Agente de IA gratuito está experimentando mucha carga o la API Key no es válida. Por favor, verifica tu archivo .env y tu clave en https://console.groq.com/";
   }
 }
