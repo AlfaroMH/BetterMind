@@ -20,6 +20,11 @@ export default function RootLayout() {
     };
     initAudio();
 
+    // Establecer el título del documento
+    if (typeof window !== 'undefined' && typeof document !== 'undefined') {
+      document.title = 'BetterMind';
+    }
+
     // Listener global para activar audio tras la primera interacción (especialmente en Web)
     const handleFirstInteraction = () => {
       console.log('LOG: Primera interacción detectada, activando audio');

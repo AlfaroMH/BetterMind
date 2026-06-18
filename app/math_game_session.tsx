@@ -629,30 +629,45 @@ export default function MathGameSession() {
   };
 
   if (gameOver) {
+    const isLevelCompleted = win && score === 100;
     return (
       <View style={styles.container}>
         <Text style={styles.title}>
-          {win && score === 100 ? '¡Nivel Completado!' : 
+          {isLevelCompleted ? '¡Nivel Completado!' : 
            timeExpired ? '¡Tiempo Agotado!' : 'Fin del Juego'}
         </Text>
         <Text style={styles.scoreResult}>Puntaje Final: {score}</Text>
-        <TouchableOpacity style={styles.backButton} onPress={() => {
-          soundManager.playSound('click');
-          soundManager.startBackgroundMusic();
-          router.replace({
-            pathname: "/math_game_session",
-            params: { gameId, level: currentLevel, gameTitle }
-          });
-        }}>
-          <Text style={styles.backButtonText}>Reiniciar Nivel</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.backButton} onPress={() => {
-          soundManager.playSound('click');
-          soundManager.restartBackgroundMusic();
-          router.replace('/(tabs)');
-        }}>
-          <Text style={styles.backButtonText}>Volver al Menú</Text>
-        </TouchableOpacity>
+        <View style={styles.buttonsContainer}>
+          {!isLevelCompleted && (
+            <TouchableOpacity style={styles.backButton} onPress={() => {
+              soundManager.playSound('click');
+              soundManager.startBackgroundMusic();
+              router.replace({
+                pathname: "/math_game_session",
+                params: { gameId, level: currentLevel, gameTitle }
+              });
+            }}>
+              <Text style={styles.backButtonText}>Reiniciar Nivel</Text>
+            </TouchableOpacity>
+          )}
+          <TouchableOpacity style={styles.backButton} onPress={() => {
+            soundManager.playSound('click');
+            soundManager.restartBackgroundMusic();
+            router.replace({
+              pathname: "/math_level_selector",
+              params: { gameId, gameTitle }
+            });
+          }}>
+            <Text style={styles.backButtonText}>Volver al Menú de Niveles</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.backButton} onPress={() => {
+            soundManager.playSound('click');
+            soundManager.restartBackgroundMusic();
+            router.replace('/(tabs)');
+          }}>
+            <Text style={styles.backButtonText}>Volver al Menú Principal</Text>
+          </TouchableOpacity>
+        </View>
       </View>
     );
   }
@@ -940,6 +955,9 @@ const styles = StyleSheet.create({
     fontSize: 24,
     marginBottom: 30,
     color: '#666',
+  },
+  buttonsContainer: {
+    gap: 15,
   },
   backButton: {
     backgroundColor: '#4158D0',

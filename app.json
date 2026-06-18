@@ -1,11 +1,11 @@
 {
   "expo": {
-    "name": "MiApp",
-    "slug": "MiApp",
+    "name": "BetterMind",
+    "slug": "BetterMind",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/images/icon.png",
-    "scheme": "miapp",
+    "icon": "./assets/images/iconBM_1.png",
+    "scheme": "bettermind",
     "userInterfaceStyle": "automatic",
     "ios": {
       "supportsTablet": true
@@ -13,9 +13,9 @@
     "android": {
       "adaptiveIcon": {
         "backgroundColor": "#E6F4FE",
-        "foregroundImage": "./assets/images/android-icon-foreground.png",
-        "backgroundImage": "./assets/images/android-icon-background.png",
-        "monochromeImage": "./assets/images/android-icon-monochrome.png"
+        "foregroundImage": "./assets/images/iconBM_1.png",
+        "backgroundImage": "./assets/images/iconBM_1.png",
+        "monochromeImage": "./assets/images/iconBM_1.png"
       },
       "predictiveBackGestureEnabled": false
     },
